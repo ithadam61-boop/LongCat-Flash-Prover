@@ -89,7 +89,7 @@ Theorem-proving performance (Pass@32 metric, %) of different reasoning and speci
 multiple benchmarks. Best in bold, second best in underlined. † indicates the score is from external reports.
 
 <div align="center" style="line-height: 1;">
-  <img src="figures/longcat_flash_prover_prove_pass32_results.png" height = "270"/>
+  <img src="figures/longcat_flash_prover_prove_pass32_results.png" height = "300"/>
 </div>
 
 Theorem-proving performance (with different larger budgets, %) of different specific prover models across multiple benchmarks. Best in bold, second best in underlined. Each element a / b denotes to the accuracy a with limited budget b (i.e., Pass@b). “UNK” means unknown of the specific budget. † indicates the score is from external reports. Because different models may have different budget calculations, we directly extract the results from the report instead of conducting our own evaluations. Therefore, some benchmark results may not be available.
@@ -146,7 +146,7 @@ model_name = "meituan-longcat/LongCat-Flash-Prover"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 messages = [
-    {"role": "user", "content": "Think about and formalize the following problem in Lean 4.\n# Problem: ..."},
+    {"role": "user", "content": "Let T0 = 2, T1 = 3, T2 = 6, and for n ≥ 3, Tn = (n+4)Tn−1 −4nTn−2 +(4n−8)Tn−3. The first few terms are 2, 3, 6, 14, 40, 152, 784, 5168, 40576. Find, with proof, a formula for Tn of the form Tn = An +Bn, where {An} and {Bn} are well-known sequences."},
     {"role": "assistant", "reasoning_content": "...", "content": "..."}
 ]
 
@@ -177,29 +177,51 @@ tools = [
     {
         "type": "function",
         "function": {
-            "name": "func_add",
-            "description": "Calculate the sum of two numbers",
+            "name": "syntax_check",
+            "description": "Check the syntactic correctness of the formal statement in Lean4.",
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "x1": {"type": "number", "description": "The first addend"},
-                    "x2": {"type": "number", "description": "The second addend"}
+                    "formal_statement": {
+                        "type": "string", 
+                        "description": "Theorem statement in Lean4 code without ```lean4."
+                    }
                 },
-                "required": ["x1", "x2"]
+                "required": ["formal_statement"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "consistency_check",
+            "description": "Check the semantic consistency between the Lean4 statement and the original natural language statement.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "informal_statement": {
+                        "type": "string", 
+                        "description": "Natural language statement."
+                    },
+                    "formal_statement": {
+                        "type": "string", 
+                        "description": "Theorem statement in Lean4 code without ```lean4."
+                    }
+                },
+                "required": ["informal_statement", "formal_statement"]
             }
         }
     }
 ]
 
 messages = [
-    {"role": "system", "content": "You are a helpful assistant."},
-    {"role": "user", "content": "Please tell me what is $$125679 + 234519$$?"},
+    {"role": "user", "content": "Think about and formalize the following problem in Lean 4.\n# Problem: The father has six sons and ten identical, indistinguishable balls. How many ways can he give the balls to his sons if everyone gets at least one? Prove that the answer is 126."},
     {
         "role": "assistant", 
-        "reasoning_content": "This calculation requires precision; I will use the func_add tool.", 
-        "tool_calls": [{"type": "function", "function": {"name": "func_add", "arguments": {"x1": 125679, "x2": 234519}}}]
+        "reasoning_content": "...", 
+        "tool_calls": [{"type": "function", "function": {"name": "syntax_check", "arguments": {"formal_statement": "```lean4\n...\n```"}}}]
     },
-    {"role": "tool", "name": "func_add", "content": '{"ans": 360198}'}
+    {"role": "tool", "name": "syntax_check", "content": "..."}
 ]
 
 text = tokenizer.apply_chat_template(
@@ -221,9 +243,6 @@ generated_ids = model.generate(
 output_ids = generated_ids[0][len(model_inputs.input_ids[0]):].tolist() 
 
 print(tokenizer.decode(output_ids, skip_special_tokens=True).strip("\n"))
-
-# Example Output:
-# The tool returned $$360198$$. Therefore, $$125679 + 234519 = 360198$$.\n</longcat_think>\nThe sum of $$125679$$ and $$234519$$ is $$360198$$.</longcat_s>
 ```
 
 ## Deployment
@@ -240,12 +259,11 @@ Any contributions to this repository are licensed under the MIT License, unless 
 See the [LICENSE](LICENSE) file for the full license text.
 
 ## Usage Considerations 
+
+
+This proprietary model has been custom-optimized for mathematical and formal theorem proofs. 
 This model has not been specifically designed or comprehensively evaluated for every possible downstream application. 
-
-Developers should take into account the known limitations of large language models, including performance variations across different languages, and carefully assess accuracy, safety, and fairness before deploying the model in sensitive or high-risk scenarios. 
-It is the responsibility of developers and downstream users to understand and comply with all applicable laws and regulations relevant to their use case, including but not limited to data protection, privacy, and content safety requirements. 
-
-Nothing in this Model Card should be interpreted as altering or restricting the terms of the MIT License under which the model is released. 
+It is not recommended for use as a regular conversational AI.
 
 ## Contact
 Please contact us at <a href="mailto:longcat-team@meituan.com">longcat-team@meituan.com</a> or join our WeChat Group if you have any questions.
