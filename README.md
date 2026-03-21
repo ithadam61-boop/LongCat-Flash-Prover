@@ -271,5 +271,6 @@ It is not recommended for use as a regular conversational AI.
 ## Contact
 Please contact us at <a href="mailto:longcat-team@meituan.com">longcat-team@meituan.com</a> or join our WeChat Group if you have any questions.
 
-<!-- #### WeChat Group -->
-<!-- <img src=figures/Wechat.png width="200px"> -->
+#### WeChat Group
+
+<img src="figs/Wechat.png" width = "200" height = "200"  />
